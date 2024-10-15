@@ -280,6 +280,11 @@ int XAxiDma_SimplePollExample(u16 DeviceId)
 	Xil_DCacheFlushRange((UINTPTR)TxBufferPtr, MAX_PKT_LEN);
 	Xil_DCacheFlushRange((UINTPTR)RxBufferPtr, MAX_PKT_LEN);
 
+	Status =  XAxiDma_Resume(&AxiDma);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	
 	for(Index = 0; Index < Tries; Index ++) {
 
 
